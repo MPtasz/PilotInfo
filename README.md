@@ -1,6 +1,6 @@
 # PilotInfo
 
-https://github.com/MPtasz/PilotInfo/blob/main/PtasWareLogo760x787.png
+![PtaszWare Logo](https://github.com/MPtasz/PilotInfo/blob/main/PtasWareLogo760x787.png)
 
 -  ____  _                __        __        
 - |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
