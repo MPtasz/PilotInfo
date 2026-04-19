@@ -1,16 +1,16 @@
 # PilotInfo
 
-  ____  _                __        __        
- |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
- | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \ 
- |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/ 
- |_|    \__\__,_|___/___|   \_/\_/ \__,_|_|  \___|
+-  ____  _                __        __        
+- |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
+- | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \ 
+- |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/ 
+- |_|    \__\__,_|___/___|   \_/\_/ \__,_|_|  \___|
 
 
-  PtaszWare
-  by: Mark Ptaszynski
-  Copyright: March, 2026
-  Version: 1.1.0
+-  PtaszWare
+-  by: Mark Ptaszynski
+-  Copyright: March, 2026
+-  Version: 1.1.0
 
 This tool allows the user to enter and store name, address, phone, AMA #
 FAA # and TRUST # on the radio so the info can be produced at the field
