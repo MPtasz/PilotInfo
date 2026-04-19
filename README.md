@@ -8,7 +8,7 @@ when needed.
 
 Copy the PilotInfo.lua file to /SCRIPTS/TOOLS/PilotInfo.lua  (on the radio's SD card).
 The data file PilotInfo.txt will be in the /SCRIPTS/TOOLS directory.
-The data file PilotInfo.txt will be created if it does not exist.
+An empty data file will be created if it does not exist.
 
 # USAGE
 
