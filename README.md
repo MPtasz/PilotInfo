@@ -1,5 +1,17 @@
 # PilotInfo
 
+  ____  _                __        __        
+ |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
+ | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \ 
+ |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/ 
+ |_|    \__\__,_|___/___|   \_/\_/ \__,_|_|  \___|
+
+
+  PtaszWare
+  by: Mark Ptaszynski
+  Copyright: March, 2026
+  Version: 1.1.0
+
 This tool allows the user to enter and store name, address, phone, AMA #
 FAA # and TRUST # on the radio so the info can be produced at the field
 when needed.
@@ -55,3 +67,21 @@ Radio Menu → Tools → Pilot Info
   - maxlen – the REAL maximum character length for this field (enforced on save)
   - hint   – short format example (stored for documentation - not used at this time
              (purhaps for future use?)
+
+  EdgeTX's lvgl.textEdit requires its 'length' to be between 32 and 128 - 
+  several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)
+  pass max(32, maxlen) to the widget to satisfy the API, then truncate to the real
+  maxlen when saving file.
+  
+# License
+
+ GPLv3: http://www.gnu.org/licenses/gpl-3.0.html
+
+ This program is free software: you can redistribute it and/or modify it under
+ the terms of the GNU General Public License as published by the Free Software
+ Foundation, either version 3 of the License, or (at your option) any later
+ version.
+
+ This program is distributed in the hope that it will be useful, but WITHOUT ANY
+ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ A PARTICULAR PURPOSE. See the GNU General Public License for more details.
