@@ -1,29 +1,57 @@
 -- =============================================================================
 --  PilotInfo.lua  –  Pilot Info Tool
---  for EdgeTX v2.11+  |  Tools Menu (One-Time Script)
+-- =============================================================================
+--
+--  ____  _                __        __                
+-- |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
+-- | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \ 
+-- |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/ 
+-- |_|    \__\__,_|___/___|   \_/\_/ \__,_|_|  \___|
+--
+--
+--  PtaszWare
+--  by: Mark Ptaszynski
+--  Copyright: March, 2026
+--  Version: 1.1.0
+--
+-- =============================================================================
+--
+-- License GPLv3: http://www.gnu.org/licenses/gpl-3.0.html
+--
+-- This program is free software: you can redistribute it and/or modify it under
+-- the terms of the GNU General Public License as published by the Free Software
+-- Foundation, either version 3 of the License, or (at your option) any later
+-- version.
+--
+-- This program is distributed in the hope that it will be useful, but WITHOUT ANY
+-- WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+-- A PARTICULAR PURPOSE. See the GNU General Public License for more details
+--
+-- =============================================================================
+--
+--  for EdgeTX v2.11+  |  Tools Menu (One-Time Run Script)
 --
 --  this tool allows the user to enter and store name, address, phone, AMA #
---  FAA # and TRUST # so the info can be produced at the field if need be
---
---  by Mark Ptaszynski
---    with assistance from Claude AI
+--  FAA # and TRUST # on the radio so the info can be produced at the field when
+--  needed
 --
 --  INSTALLATION
 --    copy this PilotInfo.lua file to /SCRIPTS/TOOLS/PilotInfo.lua  (on the radio's SD card)
---    the data file PilotInfo.txt will be created if it does not exist
 --    the data file PilotInfo.txt will be in the /SCRIPTS/TOOLS directory
+--    the data file PilotInfo.txt will be created if it does not exist
 --
 --  USAGE
 --    Radio Menu → Tools → Pilot Info
+--    - the script now opens with a view screen
 --    - if PilotInfo.txt does not exist all fields start empty
---      fill them in and press SAVE to create the file
---    - all fields are editable at any time - tap (or navigate to) any text
---      field and press ENTER to open the EdgeTX virtual keyboard
+--    - press EDIT to fill them in and press SAVE to create the file
+--    - all fields are editable at any time on the EDIT acressn
+--    - tap (or navigate to) any text field and press ENTER to open the EdgeTX virtual keyboard
 --    - press SAVE to write changes to the SD card
 --    - press the EdgeTX logo (top-left) or CLOSE to exit
 --    - if there are unsaved changes a prompt will ask to confirm
 --
---  PilotInfo.txt FORMAT (one value per line, no headers)
+--  PilotInfo.txt FORMAT (one value per line, no header)
 --    Line 1  – Pilot Name      (max 30 chars)
 --    Line 2  – Street Address  (max 50 chars)
 --    Line 3  – City/State/ZIP  (max 50 chars)
@@ -33,16 +61,20 @@
 --    Line 7  – TRUST #         (max 20 chars)
 --
 --  NOTES
---    - requires EdgeTX v2.11 or later (LVGL API + lvgl.textEdit)
+--    - LVGL is used (LVGL API + lvgl.textEdit)
+--    - written with EdgeTX v2.11 or later for LVGL support
+--
 --    FILE_PATH is the full SD card path for the pilot data file
 --    keeping it in /SCRIPTS/TOOLS/ (next to the .lua file) is clean and ensures
 --    the script can always locate its data on any supported radio model
 --
 --  FIELD DEFINITIONS
 --    each entry describes one pilot data field
+--
 --    label  – text shown above the edit box on screen
 --    maxlen – the REAL maximum character length for this field (enforced on save)
---    hint   – short format example (stored for documentation / future use)
+--    hint   – short format example (stored for documentation - not used at this time
+--             (purhaps for future use?)
 --
 --  EdgeTX's lvgl.textEdit requires its 'length' to be between 32 and 128
 --  several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)
@@ -62,7 +94,7 @@ local FIELDS = {
   { label = "TRUST #",            maxlen = 20,  hint = "TRUST Certificate #"  },
 }
 
---  save the field count so we don't call '#' inside loops
+--  save the field count so we don't have to call '#' inside loops
 
 local NUM_FIELDS = #FIELDS
 
@@ -75,12 +107,12 @@ for i = 1, NUM_FIELDS do
   values[i] = ""
 end
 
---  true = user has edited at least one field since the last save (or launch)
+--  if 'dirty = true' the user has edited at least one field since the last save (or launch)
 --  used by onBack() to decide whether to show the "Exit without saving?" dialog
 
 local dirty = false
 
---  true  = the script should close on the next run() call
+--  if 'exitApp = true' the script should close on the next run() call
 --  set by doExit() - checked in run()
 --  only run() can return the exit code to EdgeTX
 
@@ -94,12 +126,12 @@ local exitApp = false
 --  read one byte at a time with io.read(f, 1) and concatenate
 --  the characters until it finds a newline (\n) or reaches end-of-file
 --
---  f is an open readable EdgeTX file handle (returned by io.open)
+--  'f' is an open readable EdgeTX file handle (returned by io.open)
 --
 --  RETURN VALUE
 --    string – the next line of text, with the trailing newline stripped
 --             returns an empty string "" if the line itself was blank
---    nil    – end-of-file was reached with no characters available
+--    nil    – 'end-of-file' was reached with no characters available
 -- =============================================================================
 
 local function readLine(f)
@@ -109,11 +141,11 @@ local function readLine(f)
   while true do
 
     --  io.read(f, 1) reads exactly 1 byte from the file
-    --  returns nil (or an empty string on some EdgeTX builds) at end-of-file
+    --  returns nil (or an empty string depending on EdgeTX build) at end-of-file
 	
     local ch = io.read(f, 1)
 
-    --  if ch is nil or an empty string then we have hit end-of-file
+    --  if 'ch' is nil or an empty string then we have hit end-of-file
 	
     if ch == nil or ch == "" then
 	
@@ -153,9 +185,9 @@ end   -- end of readLine()
 --  FUNCTION - readFile()
 --
 --  opens PilotInfo.txt and loads each line into values[] so the UI shows
---  previously saved pilot data when the script starts
+--  any previously saved pilot data when the script starts
 --
---  EdgeTX Lua scripts do not retain state between sessions
+--  EdgeTX Lua scripts do not retain any state between sessions
 --  every launch resets all variables
 --  reading the file at startup is the only way to restore data the user entered
 --  in a previous session
@@ -168,11 +200,11 @@ end   -- end of readLine()
 local function readFile()
 
   --  io.open(path, "r") opens the file for reading
-  --  returns nil if the file does not exist this is not an error just "not yet created"
+  --  returns nil if the file does not exist this is not an error just 'not yet created'
   
   local f = io.open(FILE_PATH, "r")
 
-  --  if f is nil the file could not be opened (most likely it doesn't exist yet)
+  --  if 'f' is nil the file could not be opened (most likely it doesn't exist yet)
   --  leave values[] full of empty strings so the UI shows blank editable fields
   --  return false to let the caller knows no data was loaded
   
@@ -181,17 +213,17 @@ local function readFile()
   end
 
   --  read one line per field using readLine()
-  --  if readLine() returns nil (file shorter than expected) store "" 
+  --  if readLine() returns nil (file shorter than expected) store "" (empty string)
   
   for i = 1, NUM_FIELDS do
     local line = readLine(f)
     values[i] = line or ""
   end
 
-  --  always close the file handle when finished
-  --  EdgeTX has a small fixed limit on simultaneous open file descriptors
-  --  leaving handles open can block other file operations elsewhere
-  --  NOTE - must use io.close(f) – NOT f:close() – for EdgeTX userdata handles
+  --  always close the file when finished
+  --  EdgeTX has a small fixed limit on simultaneous open files
+  --  leaving files open can block other file operations elsewhere
+  --  NOTE - must use io.close(f) – NOT f:close() – for EdgeTX userdata files
   
   io.close(f)
 
@@ -204,6 +236,7 @@ end
 --
 --  writes the current contents of values[] to PilotInfo.txt one field per line
 --  creates the file if it does not exist - overwrites it completely if it does
+--  (no backups are kept)
 --
 --  RETURN VALUES
 --    true  – all fields written successfully
@@ -218,7 +251,7 @@ local function writeFile()
   
   local f = io.open(FILE_PATH, "w")
 
-  --  if f is nil the file could not be opened for writing
+  --  if 'f' is nil the file could not be opened for writing
   --  return false so the caller (doSave) can display an error message rather
   --  than silently losing the user's data
   
@@ -230,12 +263,12 @@ local function writeFile()
   
   for i = 1, NUM_FIELDS do
 
-    --  'values[i] or ""' guards against a nil slot (defensive coding)
+    --  'values[i] or ""' guards against a nil slot
 	
     local v = values[i] or ""
 
-    --  if the string exceeds the field's true maximum length, truncate it this
-    --	can happen because lvgl.textEdit was given length=32 for short fields
+    --  if the string exceeds the field's true maximum length, truncate it
+    --	this can happen because lvgl.textEdit was given length=32 for short fields
     --  (the API minimum) allowing the user to type more than the spec
     --  allows- update values[i] so the on-screen widget reflects the
     --  truncated text after saving
@@ -246,13 +279,13 @@ local function writeFile()
     end
 
     --  write the value followed by a newline
-    --  NOTE - must use io.write(f, str) – NOT f:write(str) – for EdgeTX handles
+    --  NOTE - must use io.write(f, str) – NOT f:write(str) – for EdgeTX files
 	
     io.write(f, v .. "\n")
   end
 
   --  release the file handle to flush the write buffer
-  --  NOTE - must use io.close(f) – NOT f:close() – for EdgeTX userdata handles
+  --  NOTE - must use io.close(f) – NOT f:close() – for EdgeTX userdata files
   
   io.close(f)
 
@@ -347,7 +380,7 @@ end
 --  creates the entire LVGL user interface
 --  - the page frame
 --  - a label + textEdit widget pair for each of the seven fields
---  and the SAVE / CLOSE buttons
+--    and the SAVE / CLOSE buttons
 --
 --  all widget positions, sizes, and callbacks are specified here keeping UI
 --  construction in one function separates it cleanly from file I/O and business logic
@@ -463,6 +496,7 @@ local function buildUI()
   local btn_y = NUM_FIELDS * ROW_H + math.floor(14 * S)
 
   --  SAVE button – writes values[] to file - shows success/failure message
+  
   pg:button({
     x     = PAD,
     y     = btn_y,
@@ -484,13 +518,137 @@ local function buildUI()
 
 end
 
+-- =============================================================================
+--  Forward declaration — allows buildViewUI and buildMenuUI to reference
+--  each other since they are mutually recursive (each can navigate to the other)
+-- =============================================================================
+
+local buildMenuUI
+
+-- =============================================================================
+--  FUNCTION - buildViewUI()
+--
+--  read-only summary screen — all seven fields on one page, no editing
+--  CLOSE exits the script; EDIT switches to the full edit page
+-- =============================================================================
+
+local function buildViewUI()
+
+  lvgl.clear()
+
+  local S       = (lvgl ~= nil and lvgl.LCD_SCALE ~= nil) and lvgl.LCD_SCALE or 1
+  local PAD     = math.floor(6   * S)
+  local ROW_V   = math.floor(24  * S)
+  local NAME_W  = math.floor(220 * S)
+  local COLON_X = math.floor(228 * S)
+  local VALUE_X = math.floor(240 * S)
+
+  local pg = lvgl.page({
+    title    = "Pilot Info Card",
+    subtitle = "Pilot Identification",
+    back     = buildMenuUI,
+  })
+
+  for i, fld in ipairs(FIELDS) do
+    local y = (i - 1) * ROW_V + PAD
+
+    pg:label({
+      x     = PAD,
+      y     = y,
+      w     = NAME_W,
+      color = COLOR_THEME_SECONDARY1,
+      text  = fld.label,
+    })
+
+    pg:label({
+      x     = COLON_X,
+      y     = y,
+      color = COLOR_THEME_SECONDARY1,
+      text  = ":",
+    })
+
+    pg:label({
+      x     = VALUE_X,
+      y     = y,
+      color = BLACK,
+      bold  = true,
+      text  = values[i] ~= "" and values[i] or "--",
+    })
+
+  end
+
+  local BTN_W = math.floor(120 * S)
+  local BTN_G = math.floor(16  * S)
+  local btn_y = NUM_FIELDS * ROW_V + math.floor(14 * S)
+
+  pg:button({
+    x     = PAD,
+    y     = btn_y,
+    w     = BTN_W,
+    text  = "CLOSE",
+    press = doExit,
+  })
+
+  pg:button({
+    x     = PAD + BTN_W + BTN_G,
+    y     = btn_y,
+    w     = BTN_W,
+    text  = "EDIT",
+    press = buildUI,
+  })
+
+end
+-- =============================================================================
+--  FUNCTION - buildMenuUI()
+--
+--  opening screen shown on launch — two large buttons side by side
+--  (this has been superseded - script now opens with the read only summary page)
+--  EDIT  → proceeds to the full edit page
+--  VIEW  → shows the read-only summary page
+-- =============================================================================
+
+buildMenuUI = function()           --  assignment form (not 'local function') so that
+                                   --  the forward-declared local slot above is filled
+  lvgl.clear()
+
+  local S     = (lvgl ~= nil and lvgl.LCD_SCALE ~= nil) and lvgl.LCD_SCALE or 1
+  local BTN_W = math.floor(160 * S)
+  local BTN_H = math.floor(50  * S)
+  local BTN_G = math.floor(20  * S)
+  local cx    = math.floor(240 * S)   --  horizontal centre of the 480-px screen
+  local top   = math.floor(70  * S)   --  Y position of both buttons
+
+  local pg = lvgl.page({
+    title    = "Pilot Info Card",
+    subtitle = "Choose an option",
+    back     = onBack,               --  RTN from menu exits (with dirty-check)
+  })
+
+  pg:button({
+    x     = cx - BTN_W - math.floor(BTN_G / 2),
+    y     = top,
+    w     = BTN_W,
+    h     = BTN_H,
+    text  = "EDIT",
+    press = buildUI,
+  })
+
+  pg:button({
+    x     = cx + math.floor(BTN_G / 2),
+    y     = top,
+    w     = BTN_W,
+    h     = BTN_H,
+    text  = "VIEW",
+    press = buildViewUI,
+  })
+
+end
 
 -- =============================================================================
 --  FUNCTION - init()
 --
 --  EdgeTX startup entry point – called exactly ONCE when the script loads
 --  loads saved pilot data from the SD card and builds the LVGL UI
---
 --  ============================================================================
 
 local function init()
@@ -503,7 +661,13 @@ local function init()
 
   readFile()
 
-   buildUI()
+  -- buildUI()
+  
+  -- buildMenuUI()   
+  -- menu not used - script goes right to view screen when run
+  -- left the function intact so it could be activated at any time if so desired
+  
+  buildViewUI()
 
 end
 
