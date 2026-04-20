@@ -1,11 +1,6 @@
 # PilotInfo
 
--  ____  _                __        __        
-- |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
-- | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \ 
-- |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/ 
-- |_|    \__\__,_|___/___|   \_/\_/ \__,_|_|  \___|
-
+![PtaszWare Logo](https://github.com/MPtasz/PilotInfo/blob/main/assets/PtasWareLogo190x197.png)
 
 -  PtaszWare
 -  by: Mark Ptaszynski
