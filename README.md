@@ -33,7 +33,8 @@ Radio Menu → Tools → Pilot Info
   - press the EdgeTX logo (top-left) or CLOSE to exit
   - if there are unsaved changes a prompt will ask to confirm
 
-## PilotInfo.txt FORMAT (one value per line, no header)
+## PilotInfo.txt FORMAT (one value per line, no header in the file)
+
 
 	| Line # | Label          | Length         | Hint                 |
     | ------ | -------------- | -------------- | -------------------- |
