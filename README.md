@@ -51,7 +51,7 @@ Radio Menu → Tools → Pilot Info
   each entry describes one pilot data field
 
   - label  – text shown above the edit box on screen
-  - maxlen – the REAL maximum character length for this field (enforced on save)
+  - length – the REAL maximum character length for this field (enforced on save)
   - hint   – short format example (stored for documentation - not used at this time
              (purhaps for future use?)
 
