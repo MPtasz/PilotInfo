@@ -35,6 +35,17 @@ Radio Menu → Tools → Pilot Info
 
 ## PilotInfo.txt FORMAT (one value per line, no header in the file)
 
+**PilotInfo.Txt example**
+
+  - Line 1 - Any Name
+  - Line 2 - Any Street Address
+  - Line 3 - Any City/State/Zip
+  - Line 4 - Any Phone #
+  - Line 5 - Any AMA #
+  - Line 6 - Any FAA #
+  - Line 7 - Any TRUST #
+  
+**PilootInfo.Txt Information**  
 
 | Line # | Label          | Length         | Hint           |
 | ------ | -------------- | -------------- | -------------- |
@@ -46,7 +57,7 @@ Radio Menu → Tools → Pilot Info
 | Line 6 | FAA #          | (max 15 chars) |                |
 | Line 7 | TRUST #        | (max 20 chars) |                |
 
-## FIELD DEFINITIONS
+### FIELD DEFINITIONS
 
   each entry describes one pilot data field
 
