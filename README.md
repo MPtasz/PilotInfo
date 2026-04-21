@@ -11,13 +11,13 @@ This tool allows the user to enter and store name, address, phone, AMA #
 FAA # and TRUST # on the radio so the info can be produced at the field
 when needed.
 
-# INSTALLATION
+## INSTALLATION
 
 Copy the PilotInfo.lua file to /SCRIPTS/TOOLS/PilotInfo.lua  (on the radio's SD card).
 The data file PilotInfo.txt will be in the /SCRIPTS/TOOLS directory.
 An empty data file will be created if it does not exist.
 
-# USAGE
+## USAGE
 
 Radio Menu → Tools → Pilot Info
   - the script now opens with a view screen
@@ -30,7 +30,7 @@ Radio Menu → Tools → Pilot Info
   - press the EdgeTX logo (top-left) or CLOSE to exit
   - if there are unsaved changes a prompt will ask to confirm
 
-# PilotInfo.txt FORMAT (one value per line, no header)
+## PilotInfo.txt FORMAT (one value per line, no header)
 
   - Line 1  – Pilot Name      (max 30 chars)
   - Line 2  – Street Address  (max 50 chars)
@@ -40,21 +40,7 @@ Radio Menu → Tools → Pilot Info
   - Line 6  – FAA #           (max 15 chars)
   - Line 7  – TRUST #         (max 20 chars)
 
-# NOTES
-
-  - LVGL is used (LVGL API + lvgl.textEdit)
-  - written with EdgeTX v2.11 or later for LVGL support
-
-  FILE_PATH is the full SD card path for the pilot data file
-  keeping it in /SCRIPTS/TOOLS/ (next to the .lua file) is clean and ensures
-  the script can always locate its data on any supported radio model
-  
-  EdgeTX's lvgl.textEdit requires its 'length' to be between 32 and 128
-  several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)
-  pass max(32, maxlen) to the widget to satisfy the API then truncate to the real
-  maxlen when saving file
-
-# FIELD DEFINITIONS
+## FIELD DEFINITIONS
 
   each entry describes one pilot data field
 
@@ -67,8 +53,22 @@ Radio Menu → Tools → Pilot Info
   several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)
   pass max(32, maxlen) to the widget to satisfy the API, then truncate to the real
   maxlen when saving file.
+
+## NOTES
+
+  - LVGL is used (LVGL API + lvgl.textEdit)
+  - written with EdgeTX v2.11 or later for LVGL support
+
+  FILE_PATH is the full SD card path for the pilot data file
+  keeping it in /SCRIPTS/TOOLS/ (next to the .lua file) is clean and ensures
+  the script can always locate its data on any supported radio model
   
-# License
+  EdgeTX's lvgl.textEdit requires its 'length' to be between 32 and 128
+  several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)
+  pass max(32, maxlen) to the widget to satisfy the API then truncate to the real
+  maxlen when saving file
+  
+## License
 
  GPLv3: http://www.gnu.org/licenses/gpl-3.0.html
 
