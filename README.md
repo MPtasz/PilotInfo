@@ -10,8 +10,9 @@
 
 ---
 
-The FAA requires all recreational operators of unmanned aircraft register their unmanned aircraft 
-and pass the TRUST test and provide proof of passage if asked by law enforcement.
+The FAA requires all recreational operators of unmanned aircraft weighing 250 grams (0.55 lbs)
+or more to register their unmanned aircraft and pass the TRUST test and provide proof of passage
+if asked by law enforcement.
 
 This tool allows the user to enter and store name, address, phone, AMA #
 FAA # and TRUST # on the radio so the info can be produced at the field
