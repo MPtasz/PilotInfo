@@ -1,5 +1,9 @@
 # PilotInfo
 
+| Centered Image |
+| :---: |
+| ![PtaszWare Logo](https://github.com/MPtasz/PilotInfo/blob/main/assets/PtasWareLogo190x197.png) |
+
 ![PtaszWare Logo](https://github.com/MPtasz/PilotInfo/blob/main/assets/PtasWareLogo190x197.png)
 
 **PtaszWare**
