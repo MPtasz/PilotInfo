@@ -2,7 +2,8 @@
 
 ![PtaszWare Logo](https://github.com/MPtasz/PilotInfo/blob/main/assets/PtasWareLogo190x197.png)
 
--  **PtaszWare**
+**PtaszWare**
+
 -  by: Mark Ptaszynski
 -  Copyright: March, 2026
 -  Version: 1.1.0
