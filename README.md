@@ -36,15 +36,15 @@ Radio Menu → Tools → Pilot Info
 ## PilotInfo.txt FORMAT (one value per line, no header in the file)
 
 
-	| Line # | Label          | Length         | Hint                 |
+	| Line   | Label          | Length         | Hint                 |
     | ------ | -------------- | -------------- | -------------------- |
 	| Line 1 | Pilot Name     | (max 30 chars) |                      |
     | Line 2 | Street Address | (max 50 chars) |                      |
     | Line 3 | City/State/ZIP | (max 50 chars) |                      |
     | Line 4 | Phone          | (max 15 chars) | e.g. (xxx) xxx-xxxx) |
-    | Line 5 | AMA #          | (max 10 chars) |                      |
-    | Line 6 | FAA #          | (max 15 chars) |                      |
-    | Line 7 | TRUST #        | (max 20 chars) |                      |
+    | Line 5 | AMA            | (max 10 chars) |                      |
+    | Line 6 | FAA            | (max 15 chars) |                      |
+    | Line 7 | TRUST          | (max 20 chars) |                      |
 
 ## FIELD DEFINITIONS
 
