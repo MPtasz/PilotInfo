@@ -35,9 +35,9 @@ Radio Menu → Tools → Pilot Info
 
 ## PilotInfo.txt FORMAT (one value per line, no header)
 
-	| Line # | Field Name | Length | Hint |
-    | ------ | ---------- | ------ | ---- }
-	| Line 1 | Pilot Name | (max 30 chars) | |
+	| Line # | Label | Length | Hint |
+    | ------ | -------------- | -------------- | ---- |
+	| Line 1 | Pilot Name     | (max 30 chars) | |
     | Line 2 | Street Address | (max 50 chars) | |
     | Line 3 | City/State/ZIP | (max 50 chars) | |
     | Line 4 | Phone | (max 15 chars) | e.g. (xxx) xxx-xxxx) |
