@@ -43,10 +43,11 @@ Radio Menu → Tools → Pilot Info
 ![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoEdit.png)     
   
   - press SAVE to write changes to the SD card
+  
+![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoSaved.png)     
+  
   - press the EdgeTX logo (top-left) or CLOSE to exit
   - if there are unsaved changes a prompt will ask to confirm
-  
-![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoSaved.png)   
 
 ## PilotInfo.txt FORMAT (one value per line, no header in the file)
 
