@@ -27,6 +27,9 @@ An empty data file will be created if it does not exist.
 ## USAGE
 
 Radio Menu → Tools → Pilot Info
+
+![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/ToolsPilotInfo.png)
+
   - the script now opens with a view screen
   - if PilotInfo.txt does not exist the file will be created
     and all fields start empty
