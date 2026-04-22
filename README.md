@@ -46,7 +46,7 @@ Radio Menu → Tools → Pilot Info
   - press the EdgeTX logo (top-left) or CLOSE to exit
   - if there are unsaved changes a prompt will ask to confirm
   
-![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoSafed.png)   
+![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoSaved.png)   
 
 ## PilotInfo.txt FORMAT (one value per line, no header in the file)
 
