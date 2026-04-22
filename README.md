@@ -21,9 +21,9 @@ when needed.
 ## INSTALLATION
 
 Copy the PilotInfo.lua file to /SCRIPTS/TOOLS/PilotInfo.lua  (on the radio's SD card).
-The 'TOOLS' menu will now have a 'PilotInfo' button.
+The 'TOOLS' menu will now have a 'PilotInfo' button, click the button to run the script.
 The data file PilotInfo.txt will be in the /SCRIPTS/TOOLS directory.
-An empty data file will be created if it does not exist.
+An empty data file will be created if it does not exist when the script is run.
 
 ## USAGE
 
