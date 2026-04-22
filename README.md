@@ -31,14 +31,22 @@ Radio Menu → Tools → Pilot Info
 ![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/ToolsPilotInfo.png)
 
   - the script now opens with a view screen
+  
+![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoDisplay.png)  
+  
   - if PilotInfo.txt does not exist the file will be created
     and all fields start empty
   - press EDIT to fill them in and press SAVE to create/save the file
   - all fields are editable at any time on the EDIT acressn
   - tap (or navigate to) any text field and press ENTER to open the EdgeTX virtual keyboard
+  
+![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoEdit.png)     
+  
   - press SAVE to write changes to the SD card
   - press the EdgeTX logo (top-left) or CLOSE to exit
   - if there are unsaved changes a prompt will ask to confirm
+  
+![Tools/PilotInfo](https://github.com/MPtasz/PilotInfo/blob/main/assets/screenshots/PilotInfoSafed.png)   
 
 ## PilotInfo.txt FORMAT (one value per line, no header in the file)
 
