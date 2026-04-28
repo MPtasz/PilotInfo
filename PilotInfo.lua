@@ -2,10 +2,10 @@
 --  PilotInfo.lua  –  Pilot Info Tool
 -- =============================================================================
 --
---  ____  _                __        __                
--- |  _ \| |_ __ _ ___ ____\ \      / /__ _ _ __ ___  
--- | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \ 
--- |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/ 
+--  ____  _                __        __
+-- |  _ \| |_ __ _ __  ____\ \      / /_ _ _ __ ___
+-- | |_) | __/ _` / __|_  / \ \ /\ / / _` | '__/ _ \
+-- |  __/| || (_| \__ \/ /   \ V  V / (_| | | |  __/
 -- |_|    \__\__,_|___/___|   \_/\_/ \__,_|_|  \___|
 --
 --
@@ -36,8 +36,8 @@
 --  needed
 --
 --  INSTALLATION
---    copy this PilotInfo.lua file to /SCRIPTS/TOOLS/PilotInfo.lua  (on the radio's SD card)
---    the data file PilotInfo.txt will be in the /SCRIPTS/TOOLS directory
+--    copy this PilotInfo.lua file to /SCRIPTS/TOOLS/ directory on the radio's SD card
+--    the data file PilotInfo.txt will also be in the /SCRIPTS/TOOLS directory
 --    the data file PilotInfo.txt will be created if it does not exist
 --
 --  USAGE
@@ -50,15 +50,6 @@
 --    - press SAVE to write changes to the SD card
 --    - press the EdgeTX logo (top-left) or CLOSE to exit
 --    - if there are unsaved changes a prompt will ask to confirm
---
---  PilotInfo.txt FORMAT (one value per line, no header)
---    Line 1  – Pilot Name      (max 30 chars)
---    Line 2  – Street Address  (max 50 chars)
---    Line 3  – City/State/ZIP  (max 50 chars)
---    Line 4  – Phone           (max 15 chars,  e.g. (xxx) xxx-xxxx)
---    Line 5  – AMA #           (max 10 chars)
---    Line 6  – FAA #           (max 15 chars)
---    Line 7  – TRUST #         (max 20 chars)
 --
 --  NOTES
 --    - LVGL is used (LVGL API + lvgl.textEdit)
@@ -75,6 +66,15 @@
 --    maxlen – the REAL maximum character length for this field (enforced on save)
 --    hint   – short format example (stored for documentation - not used at this time
 --             (purhaps for future use?)
+--
+--  PilotInfo.txt FORMAT (one value per line, no header)
+--    Line 1  – Pilot Name      (max 30 chars)
+--    Line 2  – Street Address  (max 50 chars)
+--    Line 3  – City/State/ZIP  (max 50 chars)
+--    Line 4  – Phone           (max 15 chars,  e.g. (xxx) xxx-xxxx)
+--    Line 5  – AMA #           (max 10 chars)
+--    Line 6  – FAA #           (max 15 chars)
+--    Line 7  – TRUST #         (max 20 chars)
 --
 --  EdgeTX's lvgl.textEdit requires its 'length' to be between 32 and 128
 --  several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)

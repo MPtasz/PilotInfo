@@ -90,17 +90,10 @@ Radio Menu → Tools → Pilot Info
 
 ## NOTES
 
-  - LVGL is used (LVGL API + lvgl.textEdit)
-  - written with EdgeTX v2.11 or later for LVGL support
-
-  FILE_PATH is the full SD card path for the pilot data file
-  keeping it in /SCRIPTS/TOOLS/ (next to the .lua file) is clean and ensures
+  - LVGL API is used
+  - written for EdgeTX v2.11 or later
+  - the pilot data file, 'pilotinfo.txt', is kept in /SCRIPTS/TOOLS/ (next to the .lua file) this is clean and ensures
   the script can always locate its data on any supported radio model
-  
-  EdgeTX's lvgl.textEdit requires its 'length' to be between 32 and 128
-  several fields have a true max less then 32 (Phone=15, AMA=10, FAA=15, TRUST=20)
-  pass max(32, maxlen) to the widget to satisfy the API then truncate to the real
-  maxlen when saving file
   
 ## License
 
