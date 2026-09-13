@@ -571,7 +571,7 @@ local function buildViewUI()
       x     = VALUE_X,
       y     = y,
       color = BLACK,
-      bold  = true,
+      -- bold  = true,
       text  = values[i] ~= "" and values[i] or "--",
     })
 
